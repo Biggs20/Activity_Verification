@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Activity_Verification.Models.Activity>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Activities</h2>
+
+<table id="table" class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Handle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timestamp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Verified)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th>
+                <a asp-action="AddOrEdit" class="btn btn-success">Add Activity</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Handle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Timestamp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Verified)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+                <td>
+                    <a asp-action="AddOrEdit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="text-danger ml-1" onclick="return confirm('Are you sure you want to delete this activity?')">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="#" id="loadMore" class="btn btn-info" role="button">Load More</a>
+<br />
+<br />
+<div class="form-group">
+    <input type="submit" value="Save" class="btn btn-info" />
+</div>
+<p>Click on column header to sort by that specific column</p>
+
+
+<script>src = "https://code.jquery.com/jquery-3.3.1.js"</script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="~/js/load-more-function.js"></script>
+<script src="~/js/sort-by-date.js"></script>
+<script src="~/js/sort-column-function.js"></script>
+
+
